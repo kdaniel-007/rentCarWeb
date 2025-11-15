@@ -28,7 +28,6 @@
         <p>Bienvenido, <strong><%= u.getNombreUsuario()%></strong> (Rol: <%= u.getRol()%>)</p>
 
         <ul>
-            <li><a href="#">Gestión de reservas</a></li>
             <li><a href="#">Reportes</a></li>
             <li>
                 <a href="${pageContext.request.contextPath}/VehiculosServlet?accion=listar">

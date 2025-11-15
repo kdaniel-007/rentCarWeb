@@ -19,7 +19,7 @@ public class ClienteDAO {
 
     public List<Cliente> listarTodos() {
         List<Cliente> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Clientes"; // si quieres solo activos: WHERE Estado = 1
+        String sql = "SELECT * FROM Clientes"; 
 
         try (Connection conn = ConexionBD.getConexion();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -137,8 +137,6 @@ public class ClienteDAO {
     }
 
     public boolean eliminar(int idCliente) {
-        // si prefieres solo desactivar:
-        // String sql = "UPDATE Clientes SET Estado = 0 WHERE IdCliente = ?";
         String sql = "DELETE FROM Clientes WHERE IdCliente = ?";
 
         try (Connection conn = ConexionBD.getConexion();

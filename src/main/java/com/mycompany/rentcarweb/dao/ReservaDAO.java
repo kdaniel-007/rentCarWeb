@@ -89,7 +89,7 @@ public class ReservaDAO {
         return r;
     }
 
-    // --- CONTROL DE DISPONIBILIDAD ---
+    // CONTROL DE DISPONIBILIDAD
     // Devuelve true si el vehículo NO tiene reservas que se crucen en el rango
     public boolean vehiculoDisponible(int idVehiculo, Date inicio, Date fin, Integer idReservaIgnorar) {
         String sql = "SELECT COUNT(*) AS Ocupado "
@@ -106,8 +106,8 @@ public class ReservaDAO {
         try (Connection conn = ConexionBD.getConexion(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, idVehiculo);
-            ps.setDate(2, fin);     // FechaInicio <= fin
-            ps.setDate(3, inicio);  // FechaFin >= inicio
+            ps.setDate(2, fin);     
+            ps.setDate(3, inicio);  
 
             if (idReservaIgnorar != null && idReservaIgnorar > 0) {
                 ps.setInt(4, idReservaIgnorar);
@@ -124,7 +124,6 @@ public class ReservaDAO {
             System.out.println("Error al verificar disponibilidad: " + e.getMessage());
         }
 
-        // Si algo falla, mejor decir que NO está disponible
         return false;
     }
 

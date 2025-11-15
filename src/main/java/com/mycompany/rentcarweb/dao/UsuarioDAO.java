@@ -49,7 +49,7 @@ public class UsuarioDAO {
             System.out.println("Error en login UsuarioDAO: " + ex.getMessage());
         }
 
-        return usuario; // null = credenciales inválidas
+        return usuario; 
     }
 
 }
