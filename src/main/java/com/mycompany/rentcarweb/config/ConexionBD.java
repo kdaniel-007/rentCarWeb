@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 public class ConexionBD {
 
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=RentCarDB;encrypt=false;trustServerCertificate=true";
+    private static final String URL = "jdbc:sqlserver://192.168.1.129:1433;databaseName=RentCarDB;encrypt=false;trustServerCertificate=true";
     private static final String USER = "kdaniel";
-    private static final String PASSWORD = "Devop";
+    private static final String PASSWORD = "D3v0p25$";
 
     public static Connection getConexion() throws SQLException {
         try {

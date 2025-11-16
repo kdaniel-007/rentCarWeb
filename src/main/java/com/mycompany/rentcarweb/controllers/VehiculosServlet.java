@@ -10,14 +10,16 @@ package com.mycompany.rentcarweb.controllers;
  */
 import com.mycompany.rentcarweb.dao.VehiculoDAO;
 import com.mycompany.rentcarweb.model.Vehiculo;
+
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "VehiculosServlet", urlPatterns = {"/VehiculosServlet"})
 public class VehiculosServlet extends HttpServlet {
@@ -61,9 +63,7 @@ public class VehiculosServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
-        if (accion == null) {
-            accion = "";
-        }
+        if (accion == null) accion = "";
 
         switch (accion) {
             case "guardar":
@@ -137,10 +137,8 @@ public class VehiculosServlet extends HttpServlet {
 
             boolean ok;
             if (idVehiculo == 0) {
-                // nuevo
                 ok = vehiculoDAO.insertar(v);
             } else {
-                // edición
                 ok = vehiculoDAO.actualizar(v);
             }
 
