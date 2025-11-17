@@ -44,8 +44,8 @@
         </form>
 
         <p class="text-center mt-6 text-sm">
-            <a href="${pageContext.request.contextPath}/" class="text-primary-accent hover:underline">
-                Volver al inicio
+            <a href="${pageContext.request.contextPath}/register.jsp" class="text-primary-accent hover:underline">
+                ¿No tienes una cuenta? registrate aquí
             </a>
         </p>
     </div>
