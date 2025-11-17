@@ -7,7 +7,15 @@
 <%@page import="com.mycompany.rentcarweb.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-
+    HttpSession sesion = request.getSession(false);
+    Usuario u = null;
+    if (sesion != null) {
+        u = (Usuario) sesion.getAttribute("usuarioLogueado");
+    }
+    if (u == null) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
 
     request.setAttribute("paginaActiva", "dashboard");
     request.setAttribute("tituloPagina", "Dashboard de Gestión");
