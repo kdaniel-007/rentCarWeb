@@ -17,6 +17,8 @@ public class Usuario {
     private String rol;
     private Date fechaRegistro;
     private boolean activo;
+    //SAMUEL GOMEZ
+    private byte[] contrasenaHash;
 
     public Usuario() {
     }
@@ -67,6 +69,14 @@ public class Usuario {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+    //SAMUEL GOMEZ
+    public byte[] getContrasenaHash() {
+        return contrasenaHash;
+    }
+
+    public void setContrasenaHash(byte[] contrasenaHash) {
+        this.contrasenaHash = contrasenaHash;
     }
 }
 
