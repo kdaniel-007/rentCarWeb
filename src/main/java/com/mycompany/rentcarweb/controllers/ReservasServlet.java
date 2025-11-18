@@ -8,9 +8,6 @@ package com.mycompany.rentcarweb.controllers;
  *
  * @author KevDev
  */
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import com.mycompany.rentcarweb.dao.ClienteDAO;
 import com.mycompany.rentcarweb.dao.ReservaDAO;
 import com.mycompany.rentcarweb.dao.VehiculoDAO;
@@ -21,9 +18,13 @@ import com.mycompany.rentcarweb.model.Vehiculo;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "ReservasServlet", urlPatterns = {"/ReservasServlet"})
 public class ReservasServlet extends HttpServlet {
@@ -151,7 +152,7 @@ public class ReservasServlet extends HttpServlet {
 
             String estado = request.getParameter("estado");
             if (estado == null || estado.isBlank()) {
-                estado = "pendiente";  // <-- valor permitido por la BD
+                estado = "pendiente";
             }
 
             String observaciones = request.getParameter("observaciones");
@@ -177,8 +178,7 @@ public class ReservasServlet extends HttpServlet {
             if (ok) {
                 response.sendRedirect(request.getContextPath() + "/ReservasServlet?accion=listar");
             } else {
-                request.setAttribute("error", "No se pudo guardar la reserva. "
-                        + "Verifique disponibilidad del vehículo y los datos.");
+                request.setAttribute("error", "No se pudo guardar la reserva. Verifique disponibilidad del vehículo y los datos.");
                 cargarCombos(request);
                 request.setAttribute("reserva", r);
                 request.getRequestDispatcher("reserva-form.jsp").forward(request, response);
@@ -189,6 +189,5 @@ public class ReservasServlet extends HttpServlet {
             cargarCombos(request);
             request.getRequestDispatcher("reserva-form.jsp").forward(request, response);
         }
-
     }
 }

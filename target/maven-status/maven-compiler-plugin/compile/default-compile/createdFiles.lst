@@ -1,5 +1,6 @@
 com\mycompany\rentcarweb\controllers\LoginServlet.class
 com\mycompany\rentcarweb\controllers\ClientesServlet.class
+com\mycompany\rentcarweb\controllers\RegisterServlet.class
 com\mycompany\rentcarweb\model\Reserva.class
 com\mycompany\rentcarweb\config\ConexionBD.class
 com\mycompany\rentcarweb\model\Cliente.class

@@ -7,15 +7,17 @@ package com.mycompany.rentcarweb.controllers;
  *
  * @author KevDev
  */
+
 import com.mycompany.rentcarweb.dao.UsuarioDAO;
 import com.mycompany.rentcarweb.model.Usuario;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -32,13 +34,10 @@ public class LoginServlet extends HttpServlet {
         Usuario u = usuarioDAO.login(usuario, password);
 
         if (u != null) {
-            // Login correcto → guardar en sesión y redirigir al menú
             HttpSession sesion = request.getSession();
             sesion.setAttribute("usuarioLogueado", u);
-
             response.sendRedirect(request.getContextPath() + "/menu.jsp");
         } else {
-            // Login incorrecto → regresar al login con mensaje
             request.setAttribute("error", "Usuario o contraseña incorrectos");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
@@ -47,7 +46,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Si acceden por GET, solo los mando al login
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }
